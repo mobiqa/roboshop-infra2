@@ -27,17 +27,17 @@ subnets = {
     availability_zone = ["us-east-1a", "us-east-1b"]
     nat_gw       = true
   }
-  public = {
+  app = {
 
-    name       = "public"
+    name       = "app"
     vpc_name   = "main"
     cidr_block = ["10.0.4.0/24", "10.0.5.0/24"]
     availability_zone = ["us-east-1a", "us-east-1b"]
     nat_gw       = true
   }
-  public = {
+  db = {
 
-    name       = "public"
+    name       = "db"
     vpc_name   = "main"
     cidr_block = ["10.0.6.0/24", "10.0.7.0/24"]
     availability_zone = ["us-east-1a", "us-east-1b"]
