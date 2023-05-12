@@ -20,6 +20,7 @@ module "subnets" {
   cidr_block = each.value.cidr_block
   availability_zone = each.value.availability_zone
   name              = each.value.name
+  vpc_id            = lookup(lookup(module.vpc, each.value.vpc_name, null ), "vpc_id", null))
 
 
 }
