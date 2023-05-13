@@ -13,7 +13,7 @@ module "vpc" {
 }
 
 module "docdb" {
-  source = "github.com/mobiqa/tf-module-docdb1"
+  source = "github.com/mobiqa/tf-module-docdb2"
   env    = var.env
 
   for_each       = var.docdb
