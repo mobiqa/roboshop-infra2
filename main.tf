@@ -18,9 +18,9 @@ module "docdb" {
 
   for_each       = var.docdb
   subnet_ids     = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
-#  vpc_id         = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
-#  allow_cidr     = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
-#  engine_version = each.value.engine_version
+  vpc_id         = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
+  allow_cidr     = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  engine_version = each.value.engine_version
 #  number_of_instances = each.value.number_of_instances
 #  instance_class      = each.value.instance_class
 #
