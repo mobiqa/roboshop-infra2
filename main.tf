@@ -32,7 +32,7 @@ module "vpc" {
 
 #}
 
-#
-#output "subnet_ids" {
-#  value = module.subnets
-#}
+
+output "vpc" {
+  value = module.vpc
+}
