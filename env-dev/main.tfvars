@@ -52,3 +52,12 @@ rds = {
     instance_class      = "db.t3.small"
   }
 }
+elasticache = {
+  main = {
+    vpc_name                = "main"
+    subnets_name            = "db"
+    num_cache_nodes = 1
+    node_type       = "cache.t3.micro"
+    engine_version  = "6.x"
+  }
+}
