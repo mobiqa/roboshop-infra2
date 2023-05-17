@@ -2,7 +2,6 @@ env = "dev"
 default_vpc_id = "vpc-0ce6a0df3efbac62f"
 bastion_cidr   = ["172.31.5.235/32"]
 
-
 vpc = {
   main = {
     cidr_block        = "10.0.0.0/16"
@@ -34,6 +33,7 @@ vpc = {
 
   }
 }
+
 docdb = {
   main = {
     vpc_name            = "main"
@@ -54,15 +54,17 @@ rds = {
     instance_class      = "db.t3.small"
   }
 }
+
 elasticache = {
   main = {
     vpc_name                = "main"
     subnets_name            = "db"
-    num_cache_nodes = 1
-    node_type       = "cache.t3.micro"
-    engine_version  = "6.x"
+    num_node_groups         = 2
+    replicas_per_node_group = 1
+    node_type               = "cache.t3.micro"
   }
 }
+
 rabbitmq = {
   main = {
     vpc_name           = "main"
@@ -73,6 +75,7 @@ rabbitmq = {
     deployment_mode    = "SINGLE_INSTANCE"
   }
 }
+
 alb = {
   public = {
     vpc_name     = "main"
@@ -88,33 +91,32 @@ alb = {
     internal     = true
   }
 }
-  apps = {
-    frontend = {
-      component               = "frontend"
-      vpc_name                = "main"
-      subnets_type            = "private_subnet_ids"
-      subnets_name            = "web"
-      allow_cidr_subnets_type = "public_subnets"
-      allow_cidr_subnets_name = "public"
-      app_port                = 80
-      max_size                = 2
-      min_size                = 1
-      desired_capacity        = 1
-      instance_type           = "t3.micro"
-    }
-    catalogue = {
-      component               = "catalogue"
-      vpc_name                = "main"
-      subnets_type            = "private_subnet_ids"
-      subnets_name            = "app"
-      app_port                = 8080
-      allow_cidr_subnets_type = "private_subnets"
-      allow_cidr_subnets_name = "app"
-      max_size                = 2
-      min_size                = 1
-      desired_capacity        = 1
-      instance_type           = "t3.micro"
-    }
+
+apps = {
+  frontend = {
+    component               = "frontend"
+    vpc_name                = "main"
+    subnets_type            = "private_subnet_ids"
+    subnets_name            = "web"
+    allow_cidr_subnets_type = "public_subnets"
+    allow_cidr_subnets_name = "public"
+    app_port                = 80
+    max_size                = 2
+    min_size                = 1
+    desired_capacity        = 1
+    instance_type           = "t3.micro"
   }
-
-
+  catalogue = {
+    component               = "catalogue"
+    vpc_name                = "main"
+    subnets_type            = "private_subnet_ids"
+    subnets_name            = "app"
+    app_port                = 8080
+    allow_cidr_subnets_type = "private_subnets"
+    allow_cidr_subnets_name = "app"
+    max_size                = 2
+    min_size                = 1
+    desired_capacity        = 1
+    instance_type           = "t3.micro"
+  }
+}
