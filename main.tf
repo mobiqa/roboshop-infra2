@@ -56,6 +56,9 @@ module "rabbitmq" {
   source = "github.com/mobiqa/tf-module-rabbitmq2"
   env    = var.env
 
+  bastion_cidr = var.bastion_cidr
+
+
   for_each           = var.rabbitmq
   subnet_ids         = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
   vpc_id             = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
