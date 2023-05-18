@@ -82,6 +82,8 @@ module "apps" {
   source = "github.com/mobiqa/tf-module-app2"
   env    = var.env
 
+  depends_on = [module.docdb, module.rds, module.rabbitmq, module.alb, module.rds, module.elasticache]
+
   for_each         = var.apps
   subnet_ids       = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), each.value.subnets_type, null), each.value.subnets_name, null), "subnet_ids", null)
   vpc_id           = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
