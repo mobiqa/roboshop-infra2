@@ -99,6 +99,8 @@ module "apps" {
   desired_capacity = each.value.desired_capacity
   instance_type    = each.value.instance_type
   bastion_cidr     = var.bastion_cidr
+  listener_priority = each.value.listener_priority
+
 
 }
 
