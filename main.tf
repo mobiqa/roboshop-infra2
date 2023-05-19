@@ -23,7 +23,6 @@ module "docdb" {
   number_of_instances = each.value.number_of_instances
   instance_class      = each.value.instance_class
 }
-
 module "rds" {
   source = "github.com/mobiqa/tf-module-rds2"
   env    = var.env
@@ -43,10 +42,10 @@ module "elasticache" {
   source = "github.com/mobiqa/tf-module-elasticache2"
   env    = var.env
 
-  for_each                = var.elasticache
-  subnet_ids              = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
-  vpc_id                  = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
-  allow_cidr              = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  for_each        = var.elasticache
+  subnet_ids      = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
+  vpc_id          = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
+  allow_cidr      = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
   num_cache_nodes = each.value.num_cache_nodes
   node_type       = each.value.node_type
   engine_version  = each.value.engine_version
@@ -68,7 +67,6 @@ module "rabbitmq" {
   host_instance_type = each.value.host_instance_type
   deployment_mode    = each.value.deployment_mode
 }
-
 module "alb" {
   source = "github.com/mobiqa/tf-module-alb2"
   env    = var.env

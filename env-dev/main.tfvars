@@ -107,8 +107,6 @@ apps = {
     instance_type           = "t3.micro"
     alb                     = "public"
     listener_priority       = 0
-
-
   }
   catalogue = {
     component               = "catalogue"
@@ -124,28 +122,22 @@ apps = {
     instance_type           = "t3.micro"
     alb                     = "private"
     listener_priority       = 100
-
-
   }
-
-
-user = {
-  component               = "user"
-  vpc_name                = "main"
-  subnets_type            = "private_subnet_ids"
-  subnets_name            = "app"
-  app_port                = 8080
-  allow_cidr_subnets_type = "private_subnets"
-  allow_cidr_subnets_name = "app"
-  max_size                = 2
-  min_size                = 1
-  desired_capacity        = 1
-  instance_type           = "t3.micro"
-  alb                     = "private"
-  listener_priority       = 101
-
-
-}
+  user = {
+    component               = "user"
+    vpc_name                = "main"
+    subnets_type            = "private_subnet_ids"
+    subnets_name            = "app"
+    app_port                = 8080
+    allow_cidr_subnets_type = "private_subnets"
+    allow_cidr_subnets_name = "app"
+    max_size                = 2
+    min_size                = 1
+    desired_capacity        = 1
+    instance_type           = "t3.micro"
+    alb                     = "private"
+    listener_priority       = 101
+  }
   cart = {
     component               = "cart"
     vpc_name                = "main"
@@ -160,10 +152,6 @@ user = {
     instance_type           = "t3.micro"
     alb                     = "private"
     listener_priority       = 102
-    alb                     = "private"
-    listener_priority       = 102
-
-
   }
   shipping = {
     component               = "shipping"
@@ -179,10 +167,6 @@ user = {
     instance_type           = "t3.micro"
     alb                     = "private"
     listener_priority       = 103
-    alb                     = "private"
-    listener_priority       = 103
-
-
   }
   payment = {
     component               = "payment"
@@ -198,9 +182,5 @@ user = {
     instance_type           = "t3.micro"
     alb                     = "private"
     listener_priority       = 104
-    alb                     = "private"
-    listener_priority       = 104
-
-
   }
 }
