@@ -92,6 +92,10 @@ module "apps" {
   vpc_id           = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
   allow_cidr       = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), each.value.allow_cidr_subnets_type, null), each.value.allow_cidr_subnets_name, null), "cidr_block", null)
   alb               = lookup(lookup(module.alb, each.value.alb, null), "dns_name", null)
+  listener          = lookup(lookup(module.alb, each.value.alb, null), "listener", null)
+  alb_arn           = lookup(lookup(module.alb, each.value.alb, null), "alb_arn", null)
+
+
   component        = each.value.component
   app_port         = each.value.app_port
   max_size         = each.value.max_size
