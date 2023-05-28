@@ -104,8 +104,8 @@ module "apps" {
 resource "aws_spot_instance_request" "load" {
   instance_type          = "t3.medium"
   ami                    = "ami-0b5a2b5b8f2be4ec2"
-  subnet_id              = "subnet-06b4a5240a6690f30"
-  vpc_security_group_ids = ["sg-0b76619b671c82bea"]
+  subnet_id              = "subnet-04b67df7e7630d314"
+  vpc_security_group_ids = ["sgr-0e0db8f829e6c94a4"]
   wait_for_fulfillment   = true
 }
 
