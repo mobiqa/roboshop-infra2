@@ -132,7 +132,7 @@ module "apps" {
 #}
 #
 
-
+#
 module "minikube" {
   source = "github.com/scholzj/terraform-aws-minikube"
 
@@ -160,10 +160,10 @@ module "minikube" {
 output "MINIKUBE_SERVER" {
   value = "ssh centos@${module.minikube.public_ip}"
 }
-#
-#output "KUBE_CONFIG" {
-#  value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
-#}
+
+output "KUBE_CONFIG" {
+  value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
+}
 
 #
 #module "eks" {
