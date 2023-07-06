@@ -1,6 +1,6 @@
 env = "prod"
-default_vpc_id = "vpc-03a0d85ea3e53278c"
-bastion_cidr   = ["172.31.13.76/32"]
+default_vpc_id = "vpc-02d40dc56b2a2875a"
+bastion_cidr   = ["172.31.94.143/32"]
 monitor_cidr   = ["172.31.18.78/32"]
 hosted_zone    = "mobiqa.online"
 
